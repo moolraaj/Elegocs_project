@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react'
+import { useEffect, useState } from 'react'
 
 function Api() {
     const [result, setResult] = useState([])
@@ -23,7 +23,7 @@ function Api() {
      <h1>this is a js course</h1>
      {
        result.map((ele)=>{
-        return <ul>
+        return <ul key={ele.id}>
             <li>{ele.comment_status}</li>
         </ul>
        }) 
