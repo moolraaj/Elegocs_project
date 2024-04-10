@@ -26,6 +26,7 @@ function Api() {
        result.map((ele)=>{
         return <ul key={ele.id}>
             <li>{ele.comment_status}</li>
+            <li>{ele.title.rendered}</li>
         </ul>
        }) 
      }
