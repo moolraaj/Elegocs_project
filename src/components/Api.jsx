@@ -17,6 +17,7 @@ function Api() {
   return (
      <>
      <h1>this is a heading</h1>
+     <h1>this is a second heading</h1>
      {
        result.map((ele)=>{
         return <ul>
