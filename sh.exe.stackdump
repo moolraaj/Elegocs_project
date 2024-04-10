@@ -5,7 +5,7 @@ r8 =00000000FFFFC798 r9 =00000000FFFFCD30 r10=0000000100000000
 r11=00000001004E95F7 r12=0000000100623D60 r13=00000000FFFFCBE0
 r14=0000000000000000 r15=0000000000000004
 rbp=00000000FFFFCD30 rsp=00000000FFFFC988
-program=C:\Users\ALMIGHTY\AppData\Local\GitHubDesktop\app-3.3.8\resources\app\git\usr\bin\sh.exe, pid 985, thread main
+program=C:\Users\ALMIGHTY\AppData\Local\GitHubDesktop\app-3.3.8\resources\app\git\usr\bin\sh.exe, pid 717, thread main
 cs=0033 ds=002B es=002B fs=0053 gs=002B ss=002B
 Stack trace:
 Frame        Function    Args
