@@ -16,12 +16,7 @@ function Api() {
 
   return (
      <>
-     <h1>this is a heading</h1>
-     <h1>this is a second heading</h1>
-     <h1>this is a third heading</h1>
-     <h1>this is a wordpress app im working on </h1>
-     <h1>this is a js course</h1>
-     <h1>this is heading 2.............</h1>
+     
      {
        result.map((ele)=>{
         return <ul key={ele.id}>
@@ -30,6 +25,7 @@ function Api() {
         </ul>
        }) 
      }
+  
      </>
   )
 }
