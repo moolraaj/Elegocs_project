@@ -1,12 +1,61 @@
 // AboutUs.jsx
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import ParallaxContainer from "./ParallaxContainer";
 import myImg1 from "../assets/aboutpageAssets/aboutImg-one.jpg";
 import myImg2 from "../assets/aboutpageAssets/aboutImg-two.jpg";
 import myImg3 from "../assets/aboutpageAssets/aboutImg-three.jpg";
 import myImg4 from "../assets/aboutpageAssets/aboutImg-four.jpg";
+import WorkingProcess from "../pages/About/WorkingProcess";
+
+
+
+const workingProcess = [
+  {
+    step: "Step 1",
+    title: "Discover",
+    description: "Unleashing Innovation in Every Byte Crafting  IT Solutions with Vision Precision and Technological Mastery.",
+    stepImage:{
+      mainImg: myImg1,
+    }
+  },
+  {
+    step: "Step 2",
+    title: "Design & Development",
+    description: "Elevate Design & Development: Crafting Digital Experiences Vision: Inspire Innovation Mission: Transform Ideas into Seamless, Impactful Solutions.",
+    stepImage:{
+      imageUpper: myImg2,
+      mainImg: myImg1,
+      imagelower: myImg3
+    }
+  },
+  {
+    step: "Step 3",
+    title: "Install & Testing",
+    description: "Ensuring Perfection | Vision: Seamless Integration Mission: Guaranteeing Quality, Reliability, and Performance Excellence.",
+    stepImage:{
+      imageUpper: myImg4,
+      mainImg: myImg3,
+      imagelower: myImg2
+    }
+  },
+  {
+    step: "Step 4",
+    title: "Project Delivery",
+    description: "Timely Execution | Vision: Exceed Expectations Mission: Delivering Quality Solutions On Time, Every Time, Everywhere.",
+    stepImage:{
+      imageUpper: myImg2,
+      mainImg: myImg4,
+      imagelower: myImg1
+    }
+  },
+]
+
+
 
 const AboutUs = () => {
+   const [process, setProcess] = useState([])
+
+
   useEffect(() => {
     const handleScroll = () => {
       // Update scroll position here if needed
@@ -58,6 +107,10 @@ const AboutUs = () => {
           <div className="content">
             <h2>Second Container</h2>
             <p>Dummy text for the second container.</p>
+            <div className="about-working-process">
+              <h1>working process</h1>
+              <WorkingProcess workingProcess={workingProcess} />
+            </div>
           </div>
         </ParallaxContainer>
         <ParallaxContainer

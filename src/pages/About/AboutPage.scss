@@ -1,5 +1,6 @@
 // Define variables
 $primary-color: #EAAA00;
+$secondory-color: #000000;
 $background-color: #FFFFFF;
 $bg-and-clr: #EAAA00;
 $max-width: 1520px;
@@ -9,7 +10,6 @@ $slider-thumbnail-height: 244px;
 $padding: 20px;
 $font-weight: 600;
 $border-radius: 30px;
-
 
 
 // Define styles
@@ -124,4 +124,64 @@ $border-radius: 30px;
     background: $primary-color;
     border: none;
   }
+}
+
+
+// about-working-process
+.about-working-process{
+  h1{
+    font-size: 80px;
+    font-weight: 700;
+    color: $secondory-color;
+  }
+}
+
+
+
+.working-process-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.process-step {
+  display: none;
+  &.active {
+    display: block;
+  }
+}
+
+.step-image-container {
+  margin-top: 20px;
+  img {
+    max-width: 100%;
+    height: auto;
+  }
+}
+
+.arrow-buttons {
+  display: flex;
+  justify-content: space-between;
+  width: 300px; /* Adjust as needed */
+  margin-top: 20px;
+  button {
+    padding: 10px 20px;
+    border: none;
+    background-color: #007bff;
+    color: #fff;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    &:hover {
+      background-color: #0056b3;
+    }
+    img{
+      height: 100px;
+      width: 100px;
+    }
+  }
+}
+
+
+.process-step.active {
+  display: flex;
 }
