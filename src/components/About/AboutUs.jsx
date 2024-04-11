@@ -1,29 +1,12 @@
 // AboutUs.jsx
-import React,{useState, useEffect } from "react";
+import React, { useEffect } from "react";
 import ParallaxContainer from "./ParallaxContainer";
-
-// Function to dynamically import all images from a folder
-async function importAllImages() {
-  const images = [];
-  const imageContext = import.meta.glob(
-    "../assets/aboutpageAssets/*.{jpg,jpeg,png}"
-  );
-  for (const path in imageContext) {
-    const module = await imageContext[path]();
-    images.push({
-      src: module.default,
-      alt: path.split("/").pop().split(".")[0], // Extracting image file name as alt text
-    });
-  }
-  return images;
-}
+import myImg1 from "../assets/aboutpageAssets/aboutImg-one.jpg";
+import myImg2 from "../assets/aboutpageAssets/aboutImg-two.jpg";
+import myImg3 from "../assets/aboutpageAssets/aboutImg-three.jpg";
+import myImg4 from "../assets/aboutpageAssets/aboutImg-four.jpg";
 
 const AboutUs = () => {
-  const [images, setImages] = useState([]);
- useEffect(() => {
-    importAllImages().then((result) => setImages(result));
-  }, []);
-
   useEffect(() => {
     const handleScroll = () => {
       // Update scroll position here if needed
@@ -39,19 +22,31 @@ const AboutUs = () => {
         <ParallaxContainer
           speed={0.5}
           className="container-1"
-          backgroundColor="#808080">
+          backgroundColor="#ffffff">
           <div className="content">
             <h2>First Container</h2>
             <p>Dummy text for the first container.</p>
             <div className="img-slider-container">
-              <div className="slider-img-inner">
+              <div className="slider-inner">
                 <div className="slider">
-                  {images.map((image, index) => (
-                    <div key={index} className="images-outer">
-                    <img  src={image.src} alt={image.alt} />
-                    </div>
-                  ))}
+                  <img src={myImg1} alt="img1" />
+                  <img src={myImg2} alt="img2" />
+                  <img src={myImg3} alt="img3" />
+                  <img src={myImg4} alt="img4" />
+                 
                 </div>
+                <div className="about-top-content">
+                  <h1>ABOUT US</h1>
+                  <h3>A creative digital agency working eligocs</h3>
+                  <p>
+                    We are a team with experience aim to work for customer
+                    satisfaction. Our creative brains are always at work to
+                    establish or grow your business. Transforming Ideas into
+                    Impactful Actions for Global Change.
+                  </p>
+                  <button id="get-in-tch">get in touch</button>
+                </div>
+                
               </div>
             </div>
           </div>
@@ -59,7 +54,7 @@ const AboutUs = () => {
         <ParallaxContainer
           speed={1}
           className="container-2"
-          backgroundColor="#FFFF00">
+          backgroundColor="#EAAA00">
           <div className="content">
             <h2>Second Container</h2>
             <p>Dummy text for the second container.</p>

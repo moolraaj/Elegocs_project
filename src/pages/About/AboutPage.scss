@@ -1,0 +1,127 @@
+// Define variables
+$primary-color: #EAAA00;
+$background-color: #FFFFFF;
+$bg-and-clr: #EAAA00;
+$max-width: 1520px;
+$secondory-max-width: 1029px;
+$slider-height: 520px;
+$slider-thumbnail-height: 244px;
+$padding: 20px;
+$font-weight: 600;
+$border-radius: 30px;
+
+
+
+// Define styles
+.aboutpage-outer {
+  width: 100%;
+  margin: 0;
+  padding: 0;
+}
+
+.content {
+  max-width: $max-width;
+  margin: auto;
+  position: relative;
+}
+
+// ParallaxContainer styles
+.parallax-container {
+  position: sticky;
+  top: 0;
+  height: 100vh;
+  overflow: hidden;
+
+  .content {
+    height: 100%;
+  }
+}
+
+// Z-index containers
+.container-1 {
+  z-index: 5;
+}
+
+.container-2 {
+  z-index: 4;
+}
+
+.container-3 {
+  z-index: 3;
+}
+
+.container-4 {
+  z-index: 2;
+}
+
+.container-5 {
+  z-index: 1;
+}
+
+// Slider styles
+.slider {
+  display: flex;
+  justify-content: space-between;
+  gap: 29px;
+  flex-wrap: nowrap;
+
+  &:nth-child(1) img,
+  &:last-child img {
+    width: 300px;
+    height: $slider-height;
+    border-radius: 10px;
+  }
+
+  &:nth-child(2) img,
+  &:nth-child(3) img {
+    width: 338px;
+    height: $slider-thumbnail-height;
+    border-radius: 10px;
+  }
+
+  .slider-inner {
+    position: relative;
+    width: 100%;
+  }
+}
+
+// About top content
+.about-top-content {
+  position: absolute;
+  background: $background-color;
+  max-width: $secondory-max-width;
+  margin: auto;
+  width: 100%;
+  height: auto;
+  top: 36%; /* Move top edge to the center */
+  left: 50%; /* Move left edge to the center */
+  transform: translate(-50%, -50%); /* Translate back by half of its own width and height */
+  opacity: 0.9;
+  border: 1px solid $primary-color;
+  border-radius: $border-radius;
+  padding: $padding;
+  h1{
+    font-size: 50px;
+    font-weight: $font-weight;
+    border-bottom: 5px solid $primary-color;
+    display: inline;
+  }
+  h3 {
+    color: $primary-color;
+    font-size: 40px;
+    font-weight: $font-weight;
+  }
+  p{
+    font-size: 30px;
+    font-weight: $font-weight;
+    letter-spacing: 1%;
+  }
+  button{
+    padding: $padding 40px;
+    border-radius: $border-radius;
+    text-align: right;
+    float: right;
+    background: $primary-color;
+    border: none;
+  }
+}

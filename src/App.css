@@ -1,74 +1,10 @@
-.aboutpage-outer {
-  width: 100%;
-  margin: 0;
-  padding: 0;
-}
-
-.content {
-  max-width: 1520px;
-  margin: auto;
-}
-
-/* ParallaxContainer.css */
-.parallax-container {
-  position: sticky;
-  top: 0;
-  height: 100vh;
-  overflow: hidden;
-}
-
-.parallax-container .content {
-  height: 100%;
-}
-
-.container-1 {
-  z-index: 5; /* Adjust z-index values as needed */
-}
-
-.container-2 {
-  z-index: 4; /* Adjust z-index values as needed */
-}
-
-.container-3 {
-  z-index: 3; /* Adjust z-index values as needed */
-}
-
-.container-4 {
-  z-index: 2; /* Adjust z-index values as needed */
-}
-
-.container-5 {
-  z-index: 1; /* Adjust z-index values as needed */
-}
-
-
-
-
-
-
-.slider {
-  display: flex;
-  justify-content: space-between;
-  gap: 29px;
-  flex-wrap: nowrap;
-}
-.images-outer{
-  position: relative;
-}
-
-.images-outer:nth-child(1) img,
-.images-outer:last-child img {
-  width: 300px;
-  height: 520px;
-  border-radius: 10px;
-}
-
-.images-outer:nth-child(2) img,
-.images-outer:nth-child(3) img {
-  width: 338px;
-  height: 244px;
-  border-radius: 10px;
-}
-.images-outer:nth-child(2) img{
-  margin-top: 260px;
-}
+@font-face {
+    font-family: 'Euclide Circular A';
+    src: url('../font-family/euclide-circular-a.ttf') format('truetype'); /* adjust the path and font format as needed */
+    /* Add additional src declarations for different font formats if necessary */
+  }
+  
+  body {
+    font-family: 'Euclide Circular A', sans-serif;
+  }
+  
