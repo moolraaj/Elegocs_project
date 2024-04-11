@@ -1,0 +1,24 @@
+//mixin for outer section padding
+@mixin section-padding($top,$left,$bottom,$right){
+    padding: $top $left $bottom $right;
+}
+
+// mixin for flex property
+@mixin flex-property($flex,$flex-content,$flex-items,$flex-gap,$flex-column:row,$flex-row:0px){
+    display: $flex;
+    justify-content: $flex-content;
+    align-items: $flex-items;
+    column-gap: $flex-gap;
+    flex-direction: $flex-column;
+    row-gap: $flex-row;
+  
+}
+
+//mixin for grid property
+@mixin grid-property($grid,$grid-columns,$grid-items,$grid-gap,$grid-row){
+    display: $grid;
+    grid-template-columns: $grid-columns;
+    align-items: $grid-items;
+    column-gap: $grid-gap;
+    row-gap: $grid-row;
+}

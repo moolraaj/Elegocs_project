@@ -1,9 +1,10 @@
+import AboutUs from "../../components/About/AboutUs"
 
 function AboutPage() {
   return (
     <>
-    <div>AboutPage</div>
-        </>
+    <AboutUs/>
+    </>
   )
 }
 

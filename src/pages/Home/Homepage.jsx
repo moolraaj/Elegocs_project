@@ -5,7 +5,13 @@ import AboutUs from "../../components/AboutUs"
 function Homepage() {
   return (
      <>
-     <Home/>
+     <div className="home-outer">
+      <div className="home-inner">
+      <Home/>
+      </div>
+     </div>
+    
+     <AboutUs/>
      </>
   )
 }
