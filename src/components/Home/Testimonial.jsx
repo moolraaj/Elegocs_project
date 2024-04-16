@@ -6,7 +6,7 @@ function Testimonial() {
 
     const loadTestimonials = async () => {
         try {
-            const response = await fetch('http://localhost/wordpress-headless/server/wp-json/wp/v2/testimonial');
+            const response = await fetch(`${import.meta.env.VITE_API_URL}/testimonial`);
             const data = await response.json();
             setTestimonials(data.map(ele => ele.acf.testimonials));
         } catch (error) {
@@ -57,7 +57,7 @@ function Testimonial() {
                 testimonialsArr.map((testimonial, innerIndex) => (
                     <div
                         className={`testimonial_wrap ${index === currentSlide ? 'active' : ''}`}
-                        key={testimonial.id}
+                        key={innerIndex}
                         style={getMargin(index)}
                     >
                         <div className="testi_image">

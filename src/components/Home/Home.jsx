@@ -28,7 +28,8 @@ function Home() {
 
     const loadData = async () => {
         setLoading(true)
-        let url = await fetch(`http://localhost/wordpress-headless/server/wp-json/wp/v2/pages/?slug=home`);
+        const url = await fetch(`${import.meta.env.VITE_API_URL}/pages/?slug=home`);
+
         let data = await url.json()
         setResult(data)
         setLoading(false)
@@ -73,6 +74,7 @@ function Home() {
 
     return (
         <>
+         
 
             {
                 loading ? <h1>Please wait loading........</h1> : result.map((ele) =>
