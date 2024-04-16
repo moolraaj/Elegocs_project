@@ -6,11 +6,22 @@ function Home() {
     const [result, setResult] = useState([])
     const [loading, setLoading] = useState(false)
     const [scrolling, setScrolling] = useState([])
-    const [activeIndex, setActiveIndex] = useState(null);
+    const [isAnimateVisible, setIsAnimateVisible] = useState(false);
 
-    const toggleAccordion = (index) => {
-        setActiveIndex(activeIndex === index ? null : index);
-    };
+
+
+    useEffect(() => {
+        const handleScroll = () => {
+            const scrollPosition = window.scrollY;
+            if (scrollPosition > 120 && !isAnimateVisible) {
+                setIsAnimateVisible(true);
+            }
+        }
+        window.addEventListener('scroll', handleScroll);
+        return () => {
+            window.removeEventListener('scroll', handleScroll);
+        };
+    }, [isAnimateVisible]);
 
 
 
@@ -72,6 +83,14 @@ function Home() {
                                     <h1>{ele.acf.slider_heading_first}</h1>
                                     <h1>{ele.acf.slider_heading_second}</h1>
                                     <p>{ele.acf.slider_para}</p>
+                                    
+                                </div>
+                                <div className={`home_slider_animate ${isAnimateVisible ? 'show' : ''}`}>
+                                <h1 className={`innovation-heading ${isAnimateVisible ? 'move-left' : ''}`}>
+                                        {ele.acf.innovation}
+                                    </h1>
+                                    <button type='button'>apply now</button>
+                                    <p>{ele.acf.innovation_heading}</p>
                                 </div>
                             </div>
                         </div>
@@ -79,7 +98,7 @@ function Home() {
 
                         {/*about us section starts*/}
 
-                        <div className="page_outer about_section_outer">
+                        <div className="page_outer about_section_outer scrolling">
                             <div className="page_inner about_section_inner">
                                 <div className="home_about_wrapper">
                                     <div className="home_about_left">
@@ -102,7 +121,7 @@ function Home() {
 
                         {/*transformation section starts*/}
 
-                        <div className="page_outer transform_section_outer">
+                        <div className="page_outer transform_section_outer scrolling">
                             <div className="page_inner transform_section_inner">
                                 <div className="home_transformation_wrapper">
                                     <div className="trans_flex">
@@ -187,7 +206,7 @@ function Home() {
 
 
                         {/*company section starts*/}
-                        <div className="page_outer  company_section_outer">
+                        <div className="page_outer  company_section_outer scrolling">
                             <div className="page_inner company_section_inner">
                                 <div className="home_company_wrapper">
                                     <div className="company_flex">
@@ -293,7 +312,7 @@ function Home() {
 
 
                         {/*our development process starts*/}
-                        <div className="page_outer development_section_outer">
+                        <div className="page_outer development_section_outer scrolling">
                             <div className="page_inner development_section_inner">
                                 <div className="home_development_wrapper">
                                     <div className="development_flex">
@@ -425,7 +444,7 @@ function Home() {
 
                         {/*testimonial section starts*/}
 
-                        <div className="page_outer testimonial_section_outer">
+                        <div className="page_outer testimonial_section_outer scrolling">
                             <div className="page_inner testimonial_section_inner">
                                 <div className="home_testimonial_wrapper">
                                     <div className="testimonial_flex">
@@ -455,7 +474,7 @@ function Home() {
 
 
 
-                        <div className="page_outer quote_section_outer">
+                        <div className="page_outer quote_section_outer scrolling">
                             <div className="page_inner quote_section_inner">
                                 <div className="home_quote_wrapper">
                                     <div className="qoute_para">
@@ -468,9 +487,9 @@ function Home() {
                                     </div>
 
 
-                                    </div>
-                                    </div>
-                                    </div>
+                                </div>
+                            </div>
+                        </div>
 
 
 

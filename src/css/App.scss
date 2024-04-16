@@ -5,7 +5,16 @@
 @font-face {
     font-family: 'Euclid Circular A Bold Italic';
     src: url('../font-family/Euclid\ Circular\ A\ Bold\ Italic.ttf') format('truetype');
+
+    font-family: 'Audiowide';
+    src: url('../font-family/Audiowide-Regular.ttf') format('truetype');
+     
 }
+
+ 
+  
+
+
  
 $font:font-family;
 
@@ -16,7 +25,12 @@ body {
     margin: 0px;
     padding: 0px;
     font-family: 'Euclid-Circular', sans-serif;
+  
     
+}
+h1.innovation-heading {
+    font-size: 100px;
+    font-family: $autowide;
 }
 .page_inner {
     @extend %max-width;
@@ -43,6 +57,7 @@ body {
 }
 .transform_section_outer{
 @extend %section_top_bottom_padding;
+@extend %section_bg_color;
 }
 
 .home_about_wrapper {
@@ -144,7 +159,9 @@ ul.transformation_wrapper li h4 {
 
 .home_section_outer {
     @extend %section_top_bottom_padding;
-    padding-top: 180px!important;
+    padding: 180px 0px!important;
+    position: sticky;
+    top: 0;
 }
 
 .home_slider_wrapper p {
@@ -196,15 +213,19 @@ ul.transformation_wrapper li h4 {
     border-radius: 4px;
 }
 .testimonial_flex {
-    @include  grid-property(grid,40% 1fr,center,unset,unset);
+    @include  grid-property(grid,40% 1fr,baseline,unset,unset);
 }
 .testimonial_section_outer {
     @extend %section_top_bottom_padding;
+    @extend %section_bg_color;
 }
 
 .testimonial_slider {
     position: relative;
     width: 100%;
+}
+.development_section_outer{
+    @extend %section_bg_color;
 }
 
 .testimonial_left_section h1 {
@@ -267,12 +288,23 @@ ul.transformation_wrapper li h4 {
     padding: 30px;
     position:fixed;
     width: 100%;
-    z-index: 9999;
+    z-index: 999999;
 }
 .nav_outer ul {
     padding: 0px;
     margin: 0px;
 }
+
+.home_slider_animate {
+    position: absolute;
+    right: 100%;
+    transition: right 0.5s ease;
+}
+
+ 
+  
+  
+
 
 
 
@@ -294,7 +326,7 @@ ul.transformation_wrapper li h4 {
 
 .testimonial_wrap {
     position: absolute;
-    width: calc(100% - 20px); /* Adjusted */
+    width: calc(100% - 20px);  
     opacity: 0.8;
     transition: opacity 0.5s ease;
 }
@@ -328,11 +360,11 @@ ul.transformation_wrapper li h4 {
 }
 
 .dot.active {
-    background-color: #333;
+    background-color: $primaryyellow;
 }
 .testimonial_right_section {
     width: 80%;
-    margin: auto;
+    margin: 0px auto 0px;
 }
 
 
