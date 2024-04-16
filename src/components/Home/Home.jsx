@@ -77,7 +77,7 @@ function Home() {
          
 
             {
-                loading ? <h1>Please wait loading........</h1> : result.map((ele) =>
+                loading ? <h1 className='loading'>Please wait loading........</h1> : result.map((ele) =>
                     <div className='home_wrapper' key={ele.id}>
                         <div className="page_outer home_section_outer">
                             <div className="page_inner home_section_inner">

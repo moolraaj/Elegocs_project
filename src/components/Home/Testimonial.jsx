@@ -62,7 +62,7 @@ function Testimonial() {
                     >
                         <div className="testi_image">
                             <img src={testimonial.client_image} alt={testimonial.client_name} />
-                            <img src={testimonial.client_image} alt="Post Image" />
+                            
                         </div>
                         <div className="testimonial_asking">
                             <p>{testimonial.client_description}</p>
