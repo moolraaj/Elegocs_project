@@ -6,7 +6,6 @@ import Homepage from "./pages/Home/Homepage";
 function App() {
   return (
     <>
-      <h1>this is basic react app</h1>
       <Api />
       <div className="App">
         <Routes>

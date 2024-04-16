@@ -1,21 +1,69 @@
+
 import React, { useState } from "react";
+import { gsap } from "gsap";
+import StepGif from "../../assets/aboutpageAssets/next-step.gif";
+import playAgain from "../../assets/aboutpageAssets/playAgain.gif";
 
 const WorkingProcess = ({ workingProcess }) => {
   const [currentStep, setCurrentStep] = useState(0);
-  const [showPrevButton, setShowPrevButton] = useState(false);
+
+
+const animationStep = () => {
+ 
+  gsap.to(".step-image-container .image-lower", {
+    duration: 0.8,
+    x: "-460px",
+    y: "-660px",
+    opacity: 1,
+  });
+  gsap.to(".step-image-container .image-upper", {
+    duration: 0.8,
+    x: "460px",
+    y: "660px",
+    opacity: 1,
+  });
+
+}
+
 
   const handleNextStep = () => {
-    setCurrentStep((prevStep) => prevStep + 1);
-    if (currentStep === 0) {
-      setShowPrevButton(true);
+    if (currentStep + 1 < workingProcess.length) {
+      gsap.to(".restart-workprocess.active h3,.restart-workprocess.active h1", {
+        duration: 0.8,
+        x: "-500px",
+        y: "-310px",
+        opacity: 1,
+        onComplete: () => {
+          setCurrentStep((prevStep) => prevStep + 1);
+        },
+      });
+      animationStep();
+    } else {
+      gsap.to(".restart-workprocess.active h3,.restart-workprocess.active h1", {
+        duration: 0.8,
+        x: "-500px",
+        y: "-310px",
+        opacity: 1,
+        onComplete: () => {
+          setCurrentStep(0);
+        },
+      });
     }
   };
 
-  const handlePrevStep = () => {
-    setCurrentStep((prevStep) => prevStep - 1);
-    if (currentStep === 1) {
-      setShowPrevButton(false);
-    }
+ 
+
+  const handlePlayAgain = () => {
+    gsap.to(".restart-workprocess.active h3,.restart-workprocess.active h1", {
+      duration: 0.8,
+      x: "-500px",
+      y: "-310px",
+      opacity: 1,
+      onComplete: () => {
+        setCurrentStep(0);
+      },
+    });
+   animationStep();
   };
 
   return (
@@ -25,26 +73,102 @@ const WorkingProcess = ({ workingProcess }) => {
           key={index}
           className={`process-step ${index === currentStep ? "active" : ""}`}
         >
-          <h3>{step.step}</h3>
-          <h2>{step.title}</h2>
-          <p>{step.description}</p>
+          <div className="process-steps-content">
+            <div className="step-initial">
+              <h3 id="step-no">{step.step}</h3>
+              <h1 id="step-tittle">{step.title}</h1>
+              <p>{step.description}</p>
+            </div>
+            <div className="procees-empty-containers"></div>
+            <div className="procees-empty-containers"></div>
+            <div className="step-after">
+              {index === currentStep && (
+                <div className="next-step-content">
+                  {index + 1 < workingProcess.length ? (
+                    <div className="steps-content-after restart-workprocess active">
+                      <div>
+                        <h3>{workingProcess[index + 1] ? workingProcess[index + 1].step : 'No Next Step'}</h3>
+                      </div>
+                      <div></div>
+                      <div>
+                        <h1>{workingProcess[index + 1] ? workingProcess[index + 1].title : 'No Title'}</h1>
+                      </div>
+                      <div>
+                        <button onClick={handleNextStep}>
+                          <img
+                            src={StepGif}
+                            style={{ width: "50px", height: "50px" }}
+                            alt="nextStep"
+                            className="nextStep"
+                          />
+                        </button>
+                      </div>
+                    </div>
+                  ) : (
+                    <div className="play-again-container ">
+                      <div className="steps-content-after restart-workprocess active">
+                        <div>
+                          {" "}
+                          <h3>Play Again</h3>
+                        </div>
+                        <div></div>
+                        <div>
+                          <h1>Restart</h1>
+                        </div>
+                        <div>
+                          <button onClick={handlePlayAgain}>
+                            <img
+                              src={playAgain}
+                              style={{ width: "40px", height: "40px" }}
+                              alt="playAgain"
+                              className="playAgain"
+                            />
+                          </button>
+                        </div>
+                      </div>
+                    </div>
+                  )}
+                </div>
+              )}
+            </div>
+          </div>
           {index === currentStep && (
             <div className="step-image-container">
-              <img src={step.stepImage.mainImg} alt={`Step ${index + 1}`} />
+              {" "}
+              {step.stepImage.imageUpper && (
+                <img
+                  className="image-upper"
+                  src={step.stepImage.imageUpper}
+                  alt={`Step ${index + 1}`}
+                />
+              )}
+              {step.stepImage.mainImg && (
+                <img
+                  className="main-image"
+                  src={step.stepImage.mainImg}
+                  alt={`Step ${index + 1}`}
+                />
+              )}
+
+              {step.stepImage.imagelower && (
+                <img
+                  className="image-lower"
+                  src={step.stepImage.imagelower}
+                  alt={`Step ${index + 1}`}
+                />
+              )}
             </div>
           )}
         </div>
       ))}
-      <div className="arrow-buttons">
-        {showPrevButton && (
-          <button onClick={handlePrevStep}>&#8592; Previous Step</button>
-        )}
-        {currentStep < workingProcess.length - 1 && (
-          <button onClick={handleNextStep}>Next Step &#8594;</button>
-        )}
-      </div>
     </div>
   );
 };
 
 export default WorkingProcess;
+
+
+
+
+
+

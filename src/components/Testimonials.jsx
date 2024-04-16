@@ -1,0 +1,82 @@
+
+import React, { useState } from "react";
+import testImg1 from "../assets/aboutpageAssets/aboutImg-one.jpg";
+import testImg2 from "../assets/aboutpageAssets/aboutImg-two.jpg";
+import testImg3 from "../assets/aboutpageAssets/aboutImg-three.jpg";
+import testImg4 from "../assets/aboutpageAssets/aboutImg-four.jpg";
+
+const initialTestimonials = [
+  {
+    clientImg: testImg1,
+    clientReview:
+      "“On the Windows talking painted pasture yet its express parties use. Sure last upon he same as knew next. Of believed or diverted no.”",
+    clientName: "Dinesh singh",
+    clientAddress: "Shimla, India",
+  },
+  {
+    clientImg: testImg2,
+    clientReview:
+      "“On the Windows talking painted pasture yet its express parties use. Sure last upon he same as knew next. Of believed or diverted no.”",
+    clientName: "Ramesh sood",
+    clientAddress: "Punjab, India",
+  },
+  {
+    clientImg: testImg3,
+    clientReview:
+      "“On the Windows talking painted pasture yet its express parties use. Sure last upon he same as knew next. Of believed or diverted no.”",
+    clientName: "Mayank das",
+    clientAddress: "Delhi, India",
+  },
+  // {
+  //   clientImg: testImg4,
+  //   clientReview:
+  //     "“On the Windows talking painted pasture yet its express parties use. Sure last upon he same as knew next. Of believed or diverted no.”",
+  //   clientName: "Sachin",
+  //   clientAddress: "Chandigarh, India",
+  // },
+];
+
+function Testimonials() {
+  const [testimonials, setTestimonials] = useState(initialTestimonials);
+
+  const addTestimonial = (newTestimonial) => {
+    setTestimonials((prevTestimonials) => [
+      ...prevTestimonials,
+      newTestimonial,
+    ]);
+  };
+
+  return (
+    <div className="testimonials-outer">
+      <div className="testimonial-left-section">
+        <h1>
+          <span className="uderline-text">Testimonials</span>
+          <span className="uderline-text">From Our</span>
+          <span className="uderline-text">Valued Clients</span>
+        </h1>
+      </div>
+      <div className="testimonial-right-section">
+        {testimonials.map((testimonial, index) => (
+          <div
+            key={index}
+            className="testimonial-card"
+            style={{ zIndex: -index }}
+          >
+            <img
+              src={testimonial.clientImg}
+              alt="clientImg"
+              className="client-img"
+            />
+            <div className="card-content">
+              <p>{testimonial.clientReview}</p>
+              <h1>{testimonial.clientName}</h1>
+              <h3>{testimonial.clientAddress}</h3>
+            </div>
+          </div>
+        ))}
+      </div>
+    </div>
+  );
+}
+
+export default Testimonials;

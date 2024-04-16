@@ -1,10 +1,27 @@
 @font-face {
-    font-family: 'Euclide Circular A';
-    src: url('../font-family/euclide-circular-a.ttf') format('truetype'); /* adjust the path and font format as needed */
-    /* Add additional src declarations for different font formats if necessary */
-  }
-  
-  body {
-    font-family: 'Euclide Circular A', sans-serif;
-  }
-  
+  font-family: 'Euclid Circular A Bold';
+  src: url('./font-family/Euclid\ Circular\ A\ Bold.ttf') format('truetype');
+}
+
+@font-face {
+  font-family: 'Euclid Circular A Medium';
+  src: url('./font-family/Euclid Circular A Medium.ttf') format('truetype');
+}
+
+@font-face {
+  font-family: 'Euclid Circular A SemiBold';
+  src: url('./font-family/Euclid Circular A SemiBold.ttf') format('truetype');
+}
+/* Add more @font-face rules for other font families if needed */
+
+/* Then you can use them in your CSS like this */
+body {
+  font-family: 'Euclid Circular A Medium', sans-serif;
+  scroll-behavior: smooth;
+}
+h1{
+  font-family: 'Euclid Circular A Bold',sans-serif;
+}
+h3{
+font-family: 'Euclid Circular A SemiBold',sans-serif;
+}
