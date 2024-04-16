@@ -112,7 +112,7 @@ const AboutUs = () => {
           </div>
         </ParallaxContainer>
         <ParallaxContainer
-          speed={1}
+          speed={3}
           className="container-2"
           backgroundColor="#EAAA00">
           <div className="content">
@@ -123,13 +123,14 @@ const AboutUs = () => {
           </div>
         </ParallaxContainer>
         <ParallaxContainer
-          speed={1.5}
+          speed={3.5}
           className="container-3"
           backgroundColor="#ffffff">
           <div className="content">
+          <h1 className="uderline-text our-misson">Our Mission</h1>
             <div className="our-mission-outer">
               <div className="mission-left">
-                <h1 className="uderline-text">Our Mission</h1>
+                
                 <p>
                   As a company offering <span className="uderline-para">professional web development</span> and{" "}
                   <span className="uderline-para">web hostingservices,</span> <span className="uderline-para">Eligo Creative Services</span> mission is
@@ -148,7 +149,7 @@ const AboutUs = () => {
           </div>
         </ParallaxContainer>
         <ParallaxContainer
-          speed={2}
+          speed={4}
           className="container-4"
           backgroundColor="#191C1B">
           <div className="content">
@@ -167,7 +168,7 @@ const AboutUs = () => {
           </div>
         </ParallaxContainer>
         <ParallaxContainer
-          speed={2.5}
+          speed={4.5}
           className="container-5"
           backgroundColor="#ffffff">
           <div className="content">

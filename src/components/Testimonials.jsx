@@ -27,23 +27,27 @@ const initialTestimonials = [
     clientName: "Mayank das",
     clientAddress: "Delhi, India",
   },
-  // {
-  //   clientImg: testImg4,
-  //   clientReview:
-  //     "“On the Windows talking painted pasture yet its express parties use. Sure last upon he same as knew next. Of believed or diverted no.”",
-  //   clientName: "Sachin",
-  //   clientAddress: "Chandigarh, India",
-  // },
+  {
+    clientImg: testImg4,
+    clientReview:
+      "“On the Windows talking painted pasture yet its express parties use. Sure last upon he same as knew next. Of believed or diverted no.”",
+    clientName: "Sachin",
+    clientAddress: "Chandigarh, India",
+  },
+  {
+    clientImg: testImg2,
+    clientReview:
+      "“54353353 3456356 46nted pasture yfgf het its ex fghfghfgpress parties use. Sure last upon he same as knew next. Of believed or diverted no.”",
+    clientName: "34543 ",
+    clientAddress: "35dfd, India",
+  },
 ];
 
 function Testimonials() {
-  const [testimonials, setTestimonials] = useState(initialTestimonials);
+  const [activeIndex, setActiveIndex] = useState(0);
 
-  const addTestimonial = (newTestimonial) => {
-    setTestimonials((prevTestimonials) => [
-      ...prevTestimonials,
-      newTestimonial,
-    ]);
+  const changeTestimonial = (index) => {
+    setActiveIndex(index);
   };
 
   return (
@@ -56,24 +60,34 @@ function Testimonials() {
         </h1>
       </div>
       <div className="testimonial-right-section">
-        {testimonials.map((testimonial, index) => (
+        {initialTestimonials.map((testimonial, index) => (
           <div
             key={index}
             className="testimonial-card"
             style={{ zIndex: -index }}
           >
             <img
-              src={testimonial.clientImg}
+              src={initialTestimonials[activeIndex].clientImg}
               alt="clientImg"
               className="client-img"
             />
             <div className="card-content">
-              <p>{testimonial.clientReview}</p>
-              <h1>{testimonial.clientName}</h1>
-              <h3>{testimonial.clientAddress}</h3>
+              <p>{initialTestimonials[activeIndex].clientReview}</p>
+              <h1>{initialTestimonials[activeIndex].clientName}</h1>
+              <h3>{initialTestimonials[activeIndex].clientAddress}</h3>
             </div>
           </div>
         ))}
+
+        <div className="dots">
+          {initialTestimonials.map((_, index) => (
+            <span
+              key={index}
+              className={index === activeIndex ? "dot active-dot" : "dot"}
+              onClick={() => changeTestimonial(index)}
+            />
+          ))}
+        </div>
       </div>
     </div>
   );

@@ -17,6 +17,7 @@ $border-radius: 30px;
 button {
   cursor: pointer;
 }
+
 // Define styles
 .aboutpage-outer {
   width: 100%;
@@ -34,14 +35,21 @@ button {
 }
 
 // ParallaxContainer styles
+
+.parallax-container:first-child{
+  padding: 0px;
+}
+
 .parallax-container {
   position: sticky;
   top: 0;
   height: auto;
   overflow: hidden;
   scroll-behavior: smooth;
+  padding: 0px 40px;
   .content {
     height: 100%;
+   
   }
 }
 
@@ -306,25 +314,15 @@ button {
   }
 }
 
-// .steps-content-after h1 {
-//   position: absolute;
-//   top: 0;
-// }
 
-// .steps-content-after h3 {
-//   position: absolute;
-//   margin: 0;
-//   bottom: 0;
-// }
-// .steps-content-after {
-//   position: relative;
-// }
-
-.mission-left {
-  h1 {
+.our-misson {
     font-size: $primary-font-size;
     font-weight: $secondory-font-weight;
   }
+  
+
+.mission-left {
+
   p {
     font-size: 30px;
     font-weight: 500;
@@ -407,23 +405,25 @@ button {
 
 .testimonial-right-section {
   position: relative;
-  display: flex;
-  align-items: center;
 
   .testimonial-card {
-    max-width: 475px;
+    max-width: 60%;
     border-radius: 10px;
     display: flex;
     position: absolute;
     padding: 50px;
+    background: #ffffff;
+    margin-top: 80px;
+  }
+  .testimonial-card:nth-child(1),
+  .testimonial-card:nth-child(2),
+  .testimonial-card:nth-child(3){
     box-shadow: -1px -3px 6px 9px rgba(0, 0, 0, 0.01),
-      1px -8px 6.52px 0px rgba(0, 0, 0, 0.02),
-      -2px -20px 13px 0px rgba(0, 0, 0, 0.03),
-      0px 38.52px 25.48px 0px rgba(0, 0, 0, 0.03),
-      -2px -5px 46.85px 0px rgba(0, 0, 0, 0.04),
-      0px 100px 80px 0px rgba(0, 0, 0, 0.05);
-      background: #ffffff;
-      margin-top: 80px;
+    1px -8px 6.52px 0px rgba(0, 0, 0, 0.02),
+    -2px -20px 13px 0px rgba(0, 0, 0, 0.03),
+    0px 38.52px 25.48px 0px rgba(0, 0, 0, 0.03),
+    -2px -5px 46.85px 0px rgba(0, 0, 0, 0.04),
+    0px 100px 80px 0px rgba(0, 0, 0, 0.05);
   }
 
   .client-img {
@@ -442,7 +442,7 @@ button {
   
   .testimonial-card:nth-child(2) {
     top: 40px;
-    left: 4cqb;
+    left: 40px;
   }
   
   .testimonial-card:nth-child(3) {
@@ -450,4 +450,32 @@ button {
     left: 70px;
   }
  
+}
+
+.dot {
+  height: 10px;
+  width: 10px;
+  background-color: #f1e1b7;
+  border-radius: 50%;
+  display: inline-block;
+  margin: 0 5px;
+  cursor: pointer;
+}
+
+.active-dot {
+  background-color: #eaaa00;
+}
+
+
+
+
+
+
+
+
+@media (max-width: 1440px) {
+  .parallax-container {
+    position: static;
+  }
+  
 }

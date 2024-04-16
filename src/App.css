@@ -18,6 +18,7 @@
 body {
   font-family: 'Euclid Circular A Medium', sans-serif;
   scroll-behavior: smooth;
+  margin: 0;
 }
 h1{
   font-family: 'Euclid Circular A Bold',sans-serif;
