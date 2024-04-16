@@ -1,10 +1,10 @@
 // AboutUs.jsx
 import React, { useEffect } from "react";
 import ParallaxContainer from "./ParallaxContainer";
-import myImg1 from "../assets/aboutpageAssets/aboutImg-one.jpg";
-import myImg2 from "../assets/aboutpageAssets/aboutImg-two.jpg";
-import myImg3 from "../assets/aboutpageAssets/aboutImg-three.jpg";
-import myImg4 from "../assets/aboutpageAssets/aboutImg-four.jpg";
+import myImg1 from "../../assets/aboutpageAssets/aboutImg-one.jpg";
+import myImg2 from "../../assets/aboutpageAssets/aboutImg-two.jpg";
+import myImg3 from "../../assets/aboutpageAssets/aboutImg-three.jpg";
+import myImg4 from "../../assets/aboutpageAssets/aboutImg-four.jpg";
 
 const AboutUs = () => {
   useEffect(() => {

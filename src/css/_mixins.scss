@@ -15,10 +15,10 @@
 }
 
 //mixin for grid property
-@mixin grid-property($grid,$grid-columns,$grid-items,$grid-gap,$grid-row){
+@mixin grid-property($grid,$grid-columns,$grid-items,$grid-gap,$grid-row-gap){
     display: $grid;
     grid-template-columns: $grid-columns;
     align-items: $grid-items;
     column-gap: $grid-gap;
-    row-gap: $grid-row;
+    row-gap: grid-row-gap;
 }

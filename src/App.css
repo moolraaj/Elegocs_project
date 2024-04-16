@@ -1,10 +1,2 @@
-@font-face {
-    font-family: 'Euclide Circular A';
-    src: url('../font-family/euclide-circular-a.ttf') format('truetype'); /* adjust the path and font format as needed */
-    /* Add additional src declarations for different font formats if necessary */
-  }
-  
-  body {
-    font-family: 'Euclide Circular A', sans-serif;
-  }
+ 
   
