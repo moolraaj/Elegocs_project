@@ -28,7 +28,7 @@ function Home() {
 
     const loadData = async () => {
         setLoading(true)
-        const url = await fetch(`${import.meta.env.VITE_API_URL}/pages/?slug=home`);
+        const url = await fetch(`${import.meta.env.VITE_API_URL}/pages?slug=home`);
 
         let data = await url.json()
         setResult(data)
