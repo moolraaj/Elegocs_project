@@ -76,7 +76,7 @@ const AboutUs = () => {
   useEffect(() => {
     loadData();
     const handleScroll = () => {
-      // Update scroll position here if needed
+      
     };
 
     window.addEventListener("scroll", handleScroll);
@@ -85,9 +85,7 @@ const AboutUs = () => {
 
   return (
     <>
-      {loading ? (
-        <h1 className="loading">Please wait loading........</h1>
-      ) : (
+      {
         result.map((ele, index) => (
           <div className="aboutpage-outer" key={index}>
             <div className="pages-inner about-inner">
@@ -232,7 +230,7 @@ const AboutUs = () => {
             </div>
           </div>
         ))
-      )}
+      }
     </>
   );
 };
