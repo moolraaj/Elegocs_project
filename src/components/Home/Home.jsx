@@ -6,30 +6,19 @@ function Home() {
     const [result, setResult] = useState([])
     const [loading, setLoading] = useState(false)
     const [scrolling, setScrolling] = useState([])
-    const [isAnimateVisible, setIsAnimateVisible] = useState(false);
+    const [isScrolled, setIsScrolled] = useState(false);
 
+    const [activeIndex, setActiveIndex] = useState(null);
 
-
-    useEffect(() => {
-        const handleScroll = () => {
-            const scrollPosition = window.scrollY;
-            if (scrollPosition > 120 && !isAnimateVisible) {
-                setIsAnimateVisible(true);
-            }
-        }
-        window.addEventListener('scroll', handleScroll);
-        return () => {
-            window.removeEventListener('scroll', handleScroll);
-        };
-    }, [isAnimateVisible]);
-
+    const onTitleClick = (index) => {
+        setActiveIndex(index === activeIndex ? null : index);
+    };
 
 
 
     const loadData = async () => {
         setLoading(true)
         const url = await fetch(`${import.meta.env.VITE_API_URL}/pages?slug=home`);
-
         let data = await url.json()
         setResult(data)
         setLoading(false)
@@ -37,25 +26,54 @@ function Home() {
 
 
     }
+    useEffect(() => {
+        loadData()
+        const handleScroll = () => {
+          if (window.scrollY > 100) {
+            setIsScrolled(true);
+        
+            window.removeEventListener('scroll', handleScroll);
+          }
+        };
+    
+        window.addEventListener('scroll', handleScroll);
+    
+        return () => {
+          window.removeEventListener('scroll', handleScroll);
+        };
+      }, []);
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
     useEffect(() => {
-        loadData()
-
-
         const scrollHandler = () => {
-            let posY = window.scrollY;
-            let positions = result.map((_, index) => posY + index * window.innerHeight);
-            setScrolling(positions);
-        };
+            let posY = window.scrollY
+            let positions = result.map((_, index) => posY + index * window.innerHeight)
+            setScrolling(positions)
+        }
 
-        window.addEventListener('scroll', scrollHandler);
-
+        window.addEventListener('scroll', scrollHandler)
         return () => {
-            window.removeEventListener('scroll', scrollHandler);
-        };
+            window.removeEventListener('scroll', scrollHandler)
+
+        }
     }, [])
+
+
+
+
 
 
 
@@ -74,7 +92,7 @@ function Home() {
 
     return (
         <>
-         
+
 
             {
                 loading ? <h1 className='loading'>Please wait loading........</h1> : result.map((ele) =>
@@ -85,14 +103,18 @@ function Home() {
                                     <h1>{ele.acf.slider_heading_first}</h1>
                                     <h1>{ele.acf.slider_heading_second}</h1>
                                     <p>{ele.acf.slider_para}</p>
-                                    
+
                                 </div>
-                                <div className={`home_slider_animate ${isAnimateVisible ? 'show' : ''}`}>
-                                <h1 className={`innovation-heading ${isAnimateVisible ? 'move-left' : ''}`}>
-                                        {ele.acf.innovation}
-                                    </h1>
-                                    <button type='button'>apply now</button>
-                                    <p>{ele.acf.innovation_heading}</p>
+                                <div className={`home_slider_animate ${isScrolled ? 'scrolled' : ''}`}>
+                                    <div className={`innovation_left ${isScrolled ? 'hide' : ''}`}>
+                                        <h1 className={`innovation-heading`}>
+                                            {ele.acf.innovation}
+                                        </h1>
+                                    </div>
+                                    <div className={`innovation_right ${!isScrolled ? 'hide' : 'show'}`}>
+                                        <button type='button'>apply now</button>
+                                        <p>{ele.acf.innovation_heading}</p>
+                                    </div>
                                 </div>
                             </div>
                         </div>
@@ -135,58 +157,21 @@ function Home() {
 
 
                                             {ele.acf.transformation_repeater.map((items, index) => {
-                                                return <div className="trans_items" key={index}>
-                                                    <div className="trans_number">
+                                                return  <div className="trans_number" key={index}>
                                                         <ul className='transformation_wrapper'>
                                                             <li>
-                                                                <h4>{items.transformation_num_first}</h4>
+                                                                <h4>{items.transform_number}</h4>
                                                             </li>
                                                             <li>
-                                                                <a href="" className="trans_redirecttion">{items.transformation_sescription_first}</a>
+                                                                <a href="" className="trans_redirecttion">{items.transform_heading}</a>
                                                             </li>
                                                         </ul>
-                                                        <ul className='transformation_wrapper'>
-                                                            <li>
-                                                                <h4>{items.transformation_num_second}</h4>
-                                                            </li>
-                                                            <li>
-                                                                <a href="" className="trans_redirecttion">{items.transformation_sescription_second}</a>
-                                                            </li>
-                                                        </ul>
-                                                        <ul className='transformation_wrapper'>
-                                                            <li><h4>{items.transformation_num_third}</h4></li>
-                                                            <a href="" className="trans_redirecttion">{items.transformation_sescription_third}</a>
-                                                        </ul>
-                                                        <ul className='transformation_wrapper'>
-                                                            <li> <h4>{items.transformation_num_fourth}</h4></li>
-                                                            <li> <a href="" className="trans_redirecttion">{items.transformation_sescription_fourth}</a></li>
-                                                        </ul>
-                                                        <ul className='transformation_wrapper'>
-                                                            <li> <h4>{items.transformation_num_fifth}</h4></li>
-                                                            <li><a href="" className="trans_redirecttion">{items.transformation_sescription_fifth}</a></li>
-                                                        </ul>
-                                                        <ul className='transformation_wrapper'>
-                                                            <li> <h4>{items.transformation_num_sixth}</h4></li>
-                                                            <li><a href="" className="trans_redirecttion">{items.transformation_sescription_sixth}</a></li>
-                                                        </ul>
-
-                                                        <ul className='transformation_wrapper'>
-                                                            <li> <h4>{items.transformation_num_seventh}</h4></li>
-                                                            <li> <a href="" className="trans_redirecttion">{items.transformation_sescription_seventh}</a></li>
-                                                        </ul>
-                                                        <ul className='transformation_wrapper'>
-                                                            <li><h4>{items.transformation_num_eighth}</h4></li>
-                                                            <li> <a href="" className="trans_redirecttion">{items.transformation_sescription_eight}</a></li>
-                                                        </ul>
-                                                        <ul className='transformation_wrapper'>
-                                                            <li><h4>{items.transformation_num_ninth}</h4></li>
-                                                            <li>  <a href="" className="trans_redirecttion">{items.transformation_sescription_ninth}</a></li>
-                                                        </ul>
-
+                                        
                                                     </div>
+                                                    
 
 
-                                                </div>
+                                                 
 
 
                                             })
@@ -218,82 +203,23 @@ function Home() {
 
 
                                         </div>
+
                                         <div className="company_right_section">
-
-
-                                            {ele.acf.our_compnay_repeater.map((items, index) => {
-                                                return <div className="company_items" key={index}>
-                                                    <div className="company_scroll_wrapper">
-
-                                                        <div className="company_faq_qrapper">
-                                                            <div className="company_question">
-                                                                <h4>{items.hosted_content_title}</h4>
-                                                            </div>
-                                                            <div className="company_answers">
-                                                                <p>{items.hosted_content_description}</p>
-                                                            </div>
+                                            {ele.acf.our_compnay_repeater.map((items, index) => (
+                                                <div className="company_scroll_wrapper" key={index}>
+                                                    <div className="company_faq_wrapper">
+                                                        <div className="company_question" onClick={() => onTitleClick(index)}>
+                                                            <h4>{items.faq_question}</h4>
+                                                            <i className={`fa ${activeIndex === index ? 'fa-minus' : 'fa-plus'}`}></i>
                                                         </div>
-
-                                                        <div className="company_faq_qrapper">
-                                                            <div className="company_question">
-                                                                <h4>{items.international_clients_title}</h4>
-                                                            </div>
+                                                        {activeIndex === index && (
                                                             <div className="company_answers">
-                                                                <p>{items.international_clients_description
-                                                                }</p>
+                                                                <p>{items.faq_answer}</p>
                                                             </div>
-                                                        </div>
-
-                                                        <div className="company_faq_qrapper">
-                                                            <div className="company_question">
-                                                                <h4>{items.discussion_title}</h4>
-                                                            </div>
-                                                            <div className="company_answers">
-                                                                <p>{items.discussion_description}</p>
-                                                            </div>
-                                                        </div>
-
-
-                                                        <div className="company_faq_qrapper">
-                                                            <div className="company_question">
-                                                                <h4>{items.customer_success_title}</h4>
-                                                            </div>
-                                                            <div className="company_answers">
-                                                                <p>{items.customer_success_description}</p>
-                                                            </div>
-                                                        </div>
-
-                                                        <div className="company_faq_qrapper">
-                                                            <div className="company_question">
-                                                                <h4>{items.self_learning_title}</h4>
-                                                            </div>
-                                                            <div className="company_answers">
-                                                                <p>{items.self_learning_description}</p>
-                                                            </div>
-                                                        </div>
-
-                                                        <div className="company_faq_qrapper">
-                                                            <div className="company_question">
-                                                                <h4>{items.scoping_discovery_project_name}</h4>
-                                                            </div>
-                                                            <div className="company_answers">
-                                                                <p>{items.scoping_discovery_project_description}</p>
-                                                            </div>
-                                                        </div>
-
-
-
+                                                        )}
                                                     </div>
-
                                                 </div>
-
-
-
-                                            })
-
-
-                                            }
-
+                                            ))}
                                         </div>
                                     </div>
 
@@ -325,108 +251,27 @@ function Home() {
                                         </div>
                                         <div className="development_right_section">
 
-
-                                            {ele.acf.our_development_repeater.map((items, index) => {
-                                                return <div className="development_items" key={index}>
-                                                    <div className={`development_scroll_wrapper `}>
-
-
-
-                                                        <div className={`development_scroll ${window.screenY <= scrolling[index] ? 'sticky' : ''}`} style={{ top: index * 100 + 'vh' }}>
-
-                                                            <div className="develop_number">
-                                                                <h4>{items.planning_number}</h4>
-                                                            </div>
-                                                            <div className="develop_heading">
-                                                                <h4>{items.planning_title}</h4>
-                                                            </div>
-                                                            <div className="develop_para">
-                                                                <p>{items.planning_description}</p>
-                                                            </div>
-
+                                            {
+                                                ele.acf.our_development_repeater.map((items, index) => {
+                                                    return <div className={`development_scroll ${window.screenY <= scrolling[index] ? 'sticky' : ''}`}
+                                                        style={{ top: index * 100 + ' vh' }}
+                                                    >
+                                                        <div className="develop_number">
+                                                            <h4>{items.development_serial_number}</h4>
                                                         </div>
-
-
-                                                        <div className={`development_scroll ${window.screenY <= scrolling[index] ? 'sticky' : ''}`} style={{ top: index * 100 + 'vh' }}>
-
-                                                            <div className="develop_number">
-                                                                <h4>{items.design_number}</h4>
-                                                            </div>
-                                                            <div className="develop_heading">
-                                                                <h4>{items.design_title}</h4>
-                                                            </div>
-                                                            <div className="develop_para">
-                                                                <p>{items.design_description}</p>
-                                                            </div>
-
+                                                        <div className="develop_heading">
+                                                            <h4>{items.development_heading}</h4>
                                                         </div>
-
-                                                        <div className={`development_scroll ${window.screenY <= scrolling[index] ? 'sticky' : ''}`} style={{ top: index * 100 + 'vh' }}>
-
-                                                            <div className="develop_number">
-                                                                <h4>{items.development_number}</h4>
-                                                            </div>
-                                                            <div className="develop_heading">
-                                                                <h4>{items.development_title}</h4>
-                                                            </div>
-                                                            <div className="develop_para">
-                                                                <p>{items.development_description}</p>
-                                                            </div>
-
+                                                        <div className="develop_para">
+                                                            <p>{items.development_paragraph}</p>
                                                         </div>
-
-
-                                                        <div className={`development_scroll ${window.screenY <= scrolling[index] ? 'sticky' : ''}`} style={{ top: index * 100 + 'vh' }}>
-
-                                                            <div className="develop_number">
-                                                                <h4>{items.testing_number}</h4>
-                                                            </div>
-                                                            <div className="develop_heading">
-                                                                <h4>{items.testing_title}</h4>
-                                                            </div>
-                                                            <div className="develop_para">
-                                                                <p>{items.testing_description}</p>
-                                                            </div>
-
-                                                        </div>
-
-                                                        <div className={`development_scroll ${window.screenY <= scrolling[index] ? 'sticky' : ''}`} style={{ top: index * 100 + 'vh' }}>
-
-                                                            <div className="develop_number">
-                                                                <h4>{items.review_number}</h4>
-                                                            </div>
-                                                            <div className="develop_heading">
-                                                                <h4>{items.review_title}</h4>
-                                                            </div>
-                                                            <div className="develop_para">
-                                                                <p>{items.review_description}</p>
-                                                            </div>
-
-                                                        </div>
-
-
-                                                        <div className={`development_scroll ${window.screenY <= scrolling[index] ? 'sticky' : ''}`} style={{ top: index * 100 + 'vh' }}>
-
-                                                            <div className="develop_number">
-                                                                <h4>{items.launch_number}</h4>
-                                                            </div>
-                                                            <div className="develop_heading">
-                                                                <h4>{items.launch_title}</h4>
-                                                            </div>
-                                                            <div className="develop_para">
-                                                                <p>{items.launch_description}</p>
-                                                            </div>
-
-                                                        </div>
-
                                                     </div>
 
-                                                </div>
 
 
-                                            })
-
+                                                })
                                             }
+
 
 
                                         </div>

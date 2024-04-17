@@ -4,18 +4,18 @@
 }
 
 // mixin for flex property
-@mixin flex-property($flex,$flex-content,$flex-items,$flex-gap,$flex-column:row,$flex-row:0px){
+@mixin flex-property($flex,$justify-content,$flex-direction:row,$align-items:unset,$column-gap:0px,$row-gap:0px){
     display: $flex;
-    justify-content: $flex-content;
-    align-items: $flex-items;
-    column-gap: $flex-gap;
-    flex-direction: $flex-column;
-    row-gap: $flex-row;
+    justify-content: $justify-content;
+    flex-direction: $flex-direction;
+    align-items: $align-items;
+    column-gap: $column-gap;
+    row-gap: $row-gap;
   
 }
 
 //mixin for grid property
-@mixin grid-property($grid,$grid-columns,$grid-items,$grid-gap,$grid-row-gap){
+@mixin grid-property($grid,$grid-columns,$grid-items,$grid-gap:0px,$grid-row-gap:0px){
     display: $grid;
     grid-template-columns: $grid-columns;
     align-items: $grid-items;
