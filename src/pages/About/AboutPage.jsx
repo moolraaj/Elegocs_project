@@ -1,4 +1,5 @@
-import AboutUs from "../../components/About/AboutUs"
+import AboutUs from "../../components/About/AboutUs";
+import './AboutPage.scss'
  
 function AboutPage() {
   return (
