@@ -29,19 +29,19 @@ function Home() {
     useEffect(() => {
         loadData()
         const handleScroll = () => {
-          if (window.scrollY > 100) {
-            setIsScrolled(true);
-        
-            window.removeEventListener('scroll', handleScroll);
-          }
+            if (window.scrollY > 100) {
+                setIsScrolled(true);
+
+                window.removeEventListener('scroll', handleScroll);
+            }
         };
-    
+
         window.addEventListener('scroll', handleScroll);
-    
+
         return () => {
-          window.removeEventListener('scroll', handleScroll);
+            window.removeEventListener('scroll', handleScroll);
         };
-      }, []);
+    }, []);
 
 
 
@@ -112,8 +112,12 @@ function Home() {
                                         </h1>
                                     </div>
                                     <div className={`innovation_right ${!isScrolled ? 'hide' : 'show'}`}>
-                                        <button type='button'>apply now</button>
-                                        <p>{ele.acf.innovation_heading}</p>
+                                        {isScrolled && (
+                                            <>
+                                                <button type='button'>apply now</button>
+                                                <p>{ele.acf.innovation_heading}</p>
+                                            </>
+                                        )}
                                     </div>
                                 </div>
                             </div>
@@ -157,21 +161,21 @@ function Home() {
 
 
                                             {ele.acf.transformation_repeater.map((items, index) => {
-                                                return  <div className="trans_number" key={index}>
-                                                        <ul className='transformation_wrapper'>
-                                                            <li>
-                                                                <h4>{items.transform_number}</h4>
-                                                            </li>
-                                                            <li>
-                                                                <a href="" className="trans_redirecttion">{items.transform_heading}</a>
-                                                            </li>
-                                                        </ul>
-                                        
-                                                    </div>
-                                                    
+                                                return <div className="trans_number" key={index}>
+                                                    <ul className='transformation_wrapper'>
+                                                        <li>
+                                                            <h4>{items.transform_number}</h4>
+                                                        </li>
+                                                        <li>
+                                                            <a href="" className="trans_redirecttion">{items.transform_heading}</a>
+                                                        </li>
+                                                    </ul>
+
+                                                </div>
 
 
-                                                 
+
+
 
 
                                             })
