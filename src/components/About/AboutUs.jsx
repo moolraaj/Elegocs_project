@@ -1,13 +1,14 @@
 // AboutUs.jsx
 import React, { useEffect, useState } from "react";
 import ParallaxContainer from "./ParallaxContainer";
-// import all images............
-import myImg1 from "../../assets/aboutpageAssets/aboutImg-one.jpg";
-import myImg2 from "../../assets/aboutpageAssets/aboutImg-two.jpg";
-import myImg3 from "../../assets/aboutpageAssets/aboutImg-three.jpg";
-import myImg4 from "../../assets/aboutpageAssets/aboutImg-four.jpg";
-import ourMissionImg from "../../assets/aboutpageAssets/our-mission.png";
 
+import myImg1 from '../../assets/aboutpageAssets/aboutImg-one.jpg';
+import myImg2 from '../../assets/aboutpageAssets/aboutImg-two.jpg';
+import myImg3 from '../../assets/aboutpageAssets/aboutImg-three.jpg';
+import myImg4 from '../../assets/aboutpageAssets/aboutImg-four.jpg';
+
+
+import ourMissionImg from "../../assets/aboutpageAssets/our-mission.png";
 
 import JournyImageSlider from "./JournyImageSlider";
 import Testimonials from "./Testimonials";
@@ -59,10 +60,21 @@ const workingProcess = [
 ];
 
 const AboutUs = () => {
+  const [result, setResult] = useState([]);
+  const [loading, setLoading] = useState(false);
 
+  const loadData = async () => {
+    setLoading(true);
+    const url = await fetch(`${import.meta.env.VITE_API_URL}/pages?slug=about`);
 
+    let data = await url.json();
+    setResult(data);
+    setLoading(false);
+    console.log(data);
+  };
 
   useEffect(() => {
+    loadData();
     const handleScroll = () => {
       // Update scroll position here if needed
     };
@@ -72,112 +84,156 @@ const AboutUs = () => {
   }, []);
 
   return (
-    <div className="aboutpage-outer">
-      <div className="pages-inner about-inner">
-        <ParallaxContainer
-          speed={0.5}
-          className="container-1"
-          backgroundColor="#ffffff">
-          <div className="contents">
-            <div className="img-slider-container">
+    <>
+      {loading ? (
+        <h1 className="loading">Please wait loading........</h1>
+      ) : (
+        result.map((ele, index) => (
+          <div className="aboutpage-outer" key={index}>
+            <div className="pages-inner about-inner">
+              <ParallaxContainer
+                speed={0.5}
+                className="container-1"
+                backgroundColor="#ffffff">
+                <div className="contents">
+                  <div className="img-slider-container">
+                    <div className="slider-inner">
+                      <marquee
+                        behavior="scroll"
+                        direction="left"
+                        scrollamount="11">
+                        {ele.acf.about_top_slider.map((slider, index) => (
+                          <span key={index} style={{ display: "inline-block" }}>
+                            <div className="slider">
+                              <div style={{ display: "flex" }}>
+                                <img
+                                  src={slider.top_slider_image_first}
+                                  alt={`img${index + 1}`}
+                                />
+                                <div className="images-outer">
+                                  <div></div>
+                                  <div>
+                                    <img
+                                      src={slider.top_slider_image_second}
+                                      alt={`img${index + 2}`}
+                                    />
+                                  </div>
+                                  <div>
+                                    <img
+                                      src={slider.top_slider_image_third}
+                                      alt={`img${index + 3}`}
+                                    />
+                                  </div>
+                                  <div></div>
+                                </div>
+                                <img
+                                  src={slider.top_slider_image_fourth}
+                                  alt={`img${index + 4}`}
+                                />
+                              </div>
+                            </div>
+                          </span>
+                        ))}
+                      </marquee>
 
-              <div className="slider-inner">
-                <marquee behavior="scroll" direction="left" scrollamount="11">
-                <div className="slider">
-                  <div style={{display: 'flex'}}>
-                  <img src={myImg1} alt="img1" />
-                  <div className="images-outer">
-                  <div></div>
-                  <div><img src={myImg2} alt="img2" /></div>
-                  <div><img src={myImg3} alt="img3" /></div>
-                  <div></div>
+                      <div className="about-top-content">
+                        <h1 className="uderline-text">{ele.acf.top_heading_first}</h1>
+                        <h3>{ele.acf.top_heading_second}</h3>
+                        <p>
+                          {ele.acf.top_para_first}
+                        </p>
+                        <button id="get-in-tch"><a href={ele.acf.get_in_touch_button} style={{textDecoration: 'none', color: '#000'}} target="_blank">Get In Touch</a></button>
+                      </div>
+                    </div>
                   </div>
-                  <img src={myImg4} alt="img4" />
                 </div>
+              </ParallaxContainer>
+              <ParallaxContainer
+                speed={3}
+                className="container-2"
+                backgroundColor="#EAAA00">
+                <div className="content">
+                  <div className="about-working-process">
+                    <h3>
+                      <strong>{ele.acf.working_process_heading}</strong>
+                    </h3>
+                    <WorkingProcess  workingProcess={workingProcess} />
+                    
+                  </div>
                 </div>
-                </marquee>
-                
-                <div className="about-top-content">
-                  <h1 className="uderline-text">ABOUT US</h1>
-                  <h3>A Creative Digital Agency Working Eligocs</h3>
-                  <p>
-                    We are a team with experience aim to work for customer
-                    satisfaction. Our creative brains are always at work to
-                    establish or grow your business. Transforming Ideas into
-                    Impactful Actions for Global Change.
-                  </p>
-                  <button id="get-in-tch">Get In Touch</button>
+              </ParallaxContainer>
+              <ParallaxContainer
+                speed={3.5}
+                className="container-3"
+                backgroundColor="#ffffff">
+                <div className="content">
+                  <h1 className="uderline-text our-misson">Our Mission</h1>
+                  <div className="our-mission-outer">
+                    <div className="mission-left">
+                      <p>
+                        As a company offering{" "}
+                        <span className="uderline-para">
+                          professional web development
+                        </span>{" "}
+                        and{" "}
+                        <span className="uderline-para">
+                          web hostingservices,
+                        </span>{" "}
+                        <span className="uderline-para">
+                          Eligo Creative Services
+                        </span>{" "}
+                        mission is to design unique, creative and innovative
+                        products, as well as{" "}
+                        <span className="uderline-para">
+                          technological solutions
+                        </span>
+                        , for our clients. Our dedication to quality and{" "}
+                        <span className="uderline-para">
+                          customer satisfaction
+                        </span>{" "}
+                        ensures that we strive to meet tha needs and
+                        expectations of our clients to nurture strong, long-term
+                        relationships while adding more value to our business
+                      </p>
+                    </div>
+                    <div className="mission-right">
+                      <img src={ourMissionImg} alt="ourMissionImg" />
+                    </div>
+                  </div>
                 </div>
-              </div>
+              </ParallaxContainer>
+              <ParallaxContainer
+                speed={4}
+                className="container-4"
+                backgroundColor="#191C1B">
+                <div className="content">
+                  <div className="success-journy-outer">
+                    <div className="success-journy-left">
+                      <h2>
+                        Join Us on the Journey to Success with Our Tailored
+                        Solutions and Expert Guidance.
+                      </h2>
+                      <button id="sucess-journy-btn">Unlock Success Now</button>
+                    </div>
+                    <div className="success-journy-right">
+                      <JournyImageSlider />
+                    </div>
+                  </div>
+                </div>
+              </ParallaxContainer>
+              <ParallaxContainer
+                speed={4.5}
+                className="container-5"
+                backgroundColor="#ffffff">
+                <div className="content">
+                  <Testimonials />
+                </div>
+              </ParallaxContainer>
             </div>
           </div>
-        </ParallaxContainer>
-        <ParallaxContainer
-          speed={3}
-          className="container-2"
-          backgroundColor="#EAAA00">
-          <div className="content">
-            <div className="about-working-process">
-              <h3><strong>Working Process</strong></h3>
-             <WorkingProcess workingProcess={workingProcess} />
-            </div>
-          </div>
-        </ParallaxContainer>
-        <ParallaxContainer
-          speed={3.5}
-          className="container-3"
-          backgroundColor="#ffffff">
-          <div className="content">
-          <h1 className="uderline-text our-misson">Our Mission</h1>
-            <div className="our-mission-outer">
-              <div className="mission-left">
-                
-                <p>
-                  As a company offering <span className="uderline-para">professional web development</span> and{" "}
-                  <span className="uderline-para">web hostingservices,</span> <span className="uderline-para">Eligo Creative Services</span> mission is
-                  to design unique, creative and innovative products, as well as{" "}
-                  <span className="uderline-para">technological solutions</span>, for our clients. Our
-                  dedication to quality and <span className="uderline-para">customer satisfaction</span> ensures
-                  that we strive to meet tha needs and expectations of our
-                  clients to nurture strong, long-term relationships while
-                  adding more value to our business
-                </p>
-              </div>
-              <div className="mission-right">
-                <img src={ourMissionImg} alt="ourMissionImg" />
-              </div>
-            </div>
-          </div>
-        </ParallaxContainer>
-        <ParallaxContainer
-          speed={4}
-          className="container-4"
-          backgroundColor="#191C1B">
-          <div className="content">
-            <div className="success-journy-outer">
-              <div className="success-journy-left">
-                <h2>
-                  Join Us on the Journey to Success with Our Tailored Solutions
-                  and Expert Guidance.
-                </h2>
-                <button id="sucess-journy-btn">Unlock Success Now</button>
-              </div>
-              <div className="success-journy-right">
-                <JournyImageSlider/>
-              </div>
-            </div>
-          </div>
-        </ParallaxContainer>
-        <ParallaxContainer
-          speed={4.5}
-          className="container-5"
-          backgroundColor="#ffffff">
-          <div className="content">
-           <Testimonials/>
-          </div>
-        </ParallaxContainer>
-      </div>
-    </div>
+        ))
+      )}
+    </>
   );
 };
 

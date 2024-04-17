@@ -1,4 +1,3 @@
-
 import React, { useState } from "react";
 import { gsap } from "gsap";
 import StepGif from "../../assets/aboutpageAssets/next-step.gif";
@@ -7,9 +6,8 @@ import playAgain from "../../assets/aboutpageAssets/playAgain.gif";
 const WorkingProcess = ({ workingProcess }) => {
   const [currentStep, setCurrentStep] = useState(0);
 
-
 const animationStep = () => {
- 
+
   gsap.to(".step-image-container .image-lower", {
     duration: 0.8,
     x: "-460px",
@@ -24,7 +22,6 @@ const animationStep = () => {
   });
 
 }
-
 
   const handleNextStep = () => {
     if (currentStep + 1 < workingProcess.length) {
@@ -50,8 +47,6 @@ const animationStep = () => {
       });
     }
   };
-
- 
 
   const handlePlayAgain = () => {
     gsap.to(".restart-workprocess.active h3,.restart-workprocess.active h1", {
@@ -166,8 +161,6 @@ const animationStep = () => {
 };
 
 export default WorkingProcess;
-
-
 
 
 

@@ -25,7 +25,7 @@ button {
   padding: 0;
 }
 .contents {
-  margin: 90px auto !important;
+  margin: 200px auto 90px auto !important;
 }
 .content {
   max-width: $max-width;
@@ -112,7 +112,7 @@ button {
   margin: auto;
   width: 100%;
   height: auto;
-  top: 50%; /* Move top edge to the center */
+  top: 60%; /* Move top edge to the center */
   left: 50%; /* Move left edge to the center */
   transform: translate(
     -50%,
@@ -466,7 +466,6 @@ button {
 .active-dot {
   background-color: #eaaa00;
 }
-
 
 
 
