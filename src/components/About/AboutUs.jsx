@@ -10,8 +10,8 @@ import ParallaxContainer from "./ParallaxContainer";
 
 
 import JournyImageSlider from "./JournyImageSlider";
-import Testimonials from "./Testimonials";
 import WorkingProcess from "./WorkingProcess";
+import Testimoinals from "../../common/Testimoinals";
 
 // const workingProcess = [
 //   {
@@ -223,7 +223,7 @@ const AboutUs = () => {
                 className="container-5"
                 backgroundColor="#ffffff">
                 <div className="content">
-                  <Testimonials result={ele}/>
+                  <Testimoinals/>
                 </div>
               </ParallaxContainer>
             </div>

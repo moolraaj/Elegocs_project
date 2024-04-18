@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react'
 import Testimonial from './Testimonial'
 import TransformPartner from './TransformPartner'
+import Testimonials from '../../common/Testimoinals'
 
 function Home() {
 
@@ -313,8 +314,11 @@ function Home() {
 
 
                         {/*testimonial section starts*/}
+                        <div className='content'>
+                        <Testimonials/>
+                        </div>
 
-                        <div className="page_outer testimonial_section_outer scrolling">
+                        {/* <div className="page_outer testimonial_section_outer scrolling">
                             <div className="page_inner testimonial_section_inner">
                                 <div className="home_testimonial_wrapper">
                                     <div className="testimonial_flex">
@@ -323,18 +327,21 @@ function Home() {
                                                 from our
                                                 valued clients</h1>
                                         </div>
+                                        
                                         <div className="testimonial_right_section">
                                             <div className="testimonial_inner_flex">
 
                                                 <Testimonial
                                                 />
+
                                             </div>
                                         </div>
+                                       
                                     </div>
                                 </div>
                             </div>
                         </div>
-
+ */}
 
 
 
