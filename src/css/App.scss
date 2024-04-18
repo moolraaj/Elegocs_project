@@ -28,7 +28,11 @@ body {
   
     
 }
- 
+a{
+    text-decoration: none;
+    color: inherit;
+} 
+
 .page_inner {
     @extend %max-width;
 }
