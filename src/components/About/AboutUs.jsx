@@ -2,62 +2,61 @@
 import React, { useEffect, useState } from "react";
 import ParallaxContainer from "./ParallaxContainer";
 
-import myImg1 from '../../assets/aboutpageAssets/aboutImg-one.jpg';
-import myImg2 from '../../assets/aboutpageAssets/aboutImg-two.jpg';
-import myImg3 from '../../assets/aboutpageAssets/aboutImg-three.jpg';
-import myImg4 from '../../assets/aboutpageAssets/aboutImg-four.jpg';
+// import myImg1 from '../../assets/aboutpageAssets/aboutImg-one.jpg';
+// import myImg2 from '../../assets/aboutpageAssets/aboutImg-two.jpg';
+// import myImg3 from '../../assets/aboutpageAssets/aboutImg-three.jpg';
+// import myImg4 from '../../assets/aboutpageAssets/aboutImg-four.jpg';
 
 
-import ourMissionImg from "../../assets/aboutpageAssets/our-mission.png";
 
 import JournyImageSlider from "./JournyImageSlider";
 import Testimonials from "./Testimonials";
 import WorkingProcess from "./WorkingProcess";
 
-const workingProcess = [
-  {
-    step: "Step 1",
-    title: "Discover",
-    description:
-      "Unleashing Innovation in Every Byte Crafting  IT Solutions with Vision Precision and Technological Mastery.",
-    stepImage: {
-      mainImg: myImg1,
-    },
-  },
-  {
-    step: "Step 2",
-    title: "Design & Development",
-    description:
-      "Elevate Design & Development: Crafting Digital Experiences Vision: Inspire Innovation Mission: Transform Ideas into Seamless, Impactful Solutions.",
-    stepImage: {
-      imageUpper: myImg2,
-      mainImg: myImg1,
-      imagelower: myImg3,
-    },
-  },
-  {
-    step: "Step 3",
-    title: "Install & Testing",
-    description:
-      "Ensuring Perfection | Vision: Seamless Integration Mission: Guaranteeing Quality, Reliability, and Performance Excellence.",
-    stepImage: {
-      imageUpper: myImg4,
-      mainImg: myImg3,
-      imagelower: myImg2,
-    },
-  },
-  {
-    step: "Step 4",
-    title: "Project Delivery",
-    description:
-      "Timely Execution | Vision: Exceed Expectations Mission: Delivering Quality Solutions On Time, Every Time, Everywhere.",
-    stepImage: {
-      imageUpper: myImg2,
-      mainImg: myImg4,
-      imagelower: myImg1,
-    },
-  },
-];
+// const workingProcess = [
+//   {
+//     step: "Step 1",
+//     title: "Discover",
+//     description:
+//       "Unleashing Innovation in Every Byte Crafting  IT Solutions with Vision Precision and Technological Mastery.",
+//     stepImage: {
+//       mainImg: myImg1,
+//     },
+//   },
+//   {
+//     step: "Step 2",
+//     title: "Design & Development",
+//     description:
+//       "Elevate Design & Development: Crafting Digital Experiences Vision: Inspire Innovation Mission: Transform Ideas into Seamless, Impactful Solutions.",
+//     stepImage: {
+//       imageUpper: myImg2,
+//       mainImg: myImg1,
+//       imagelower: myImg3,
+//     },
+//   },
+//   {
+//     step: "Step 3",
+//     title: "Install & Testing",
+//     description:
+//       "Ensuring Perfection | Vision: Seamless Integration Mission: Guaranteeing Quality, Reliability, and Performance Excellence.",
+//     stepImage: {
+//       imageUpper: myImg4,
+//       mainImg: myImg3,
+//       imagelower: myImg2,
+//     },
+//   },
+//   {
+//     step: "Step 4",
+//     title: "Project Delivery",
+//     description:
+//       "Timely Execution | Vision: Exceed Expectations Mission: Delivering Quality Solutions On Time, Every Time, Everywhere.",
+//     stepImage: {
+//       imageUpper: myImg2,
+//       mainImg: myImg4,
+//       imagelower: myImg1,
+//     },
+//   },
+// ];
 
 const AboutUs = () => {
   const [result, setResult] = useState([]);
@@ -140,7 +139,7 @@ const AboutUs = () => {
                         <p>
                           {ele.acf.top_para_first}
                         </p>
-                        <button id="get-in-tch"><a href={ele.acf.get_in_touch_button} style={{textDecoration: 'none', color: '#000'}} target="_blank">Get In Touch</a></button>
+                        <button id="get-in-tch"><a href={ele.acf.get_in_touch_button}  target="_blank">Get In Touch</a></button>
                       </div>
                     </div>
                   </div>
@@ -155,7 +154,7 @@ const AboutUs = () => {
                     <h3>
                       <strong>{ele.acf.working_process_heading}</strong>
                     </h3>
-                    <WorkingProcess  workingProcess={workingProcess} />
+                    <WorkingProcess  result={ele} />
                     
                   </div>
                 </div>
@@ -165,7 +164,7 @@ const AboutUs = () => {
                 className="container-3"
                 backgroundColor="#ffffff">
                 <div className="content">
-                  <h1 className="uderline-text our-misson">Our Mission</h1>
+                  <h1 className="uderline-text our-misson">{ele.acf.our_mission_heading}</h1>
                   <div className="our-mission-outer">
                     <div className="mission-left">
                       <p>
@@ -195,7 +194,7 @@ const AboutUs = () => {
                       </p>
                     </div>
                     <div className="mission-right">
-                      <img src={ourMissionImg} alt="ourMissionImg" />
+                      <img src={ele.acf.our_mission_image} alt="ourMissionImg" />
                     </div>
                   </div>
                 </div>
@@ -211,10 +210,10 @@ const AboutUs = () => {
                         Join Us on the Journey to Success with Our Tailored
                         Solutions and Expert Guidance.
                       </h2>
-                      <button id="sucess-journy-btn">Unlock Success Now</button>
+                      <button id="sucess-journy-btn"><a href={ele.acf.unlock_success_now_button} target="_blank"></a>Unlock Success Now</button>
                     </div>
                     <div className="success-journy-right">
-                      <JournyImageSlider />
+                      <JournyImageSlider result={ele}/>
                     </div>
                   </div>
                 </div>
@@ -224,7 +223,7 @@ const AboutUs = () => {
                 className="container-5"
                 backgroundColor="#ffffff">
                 <div className="content">
-                  <Testimonials />
+                  <Testimonials result={ele}/>
                 </div>
               </ParallaxContainer>
             </div>
