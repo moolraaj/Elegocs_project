@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react'
 import Testimonial from './Testimonial'
+import TransformPartner from './TransformPartner'
 
 function Home() {
 
@@ -7,6 +8,7 @@ function Home() {
     const [loading, setLoading] = useState(false)
     const [scrolling, setScrolling] = useState([])
     const [isScrolled, setIsScrolled] = useState(false);
+    
 
     const [activeIndex, setActiveIndex] = useState(null);
 
@@ -26,7 +28,17 @@ function Home() {
 
 
     }
+
+
+    
+
+
+    
+
+
     useEffect(() => {
+        
+        
         loadData()
         const handleScroll = () => {
             if (window.scrollY > 100) {
@@ -93,9 +105,11 @@ function Home() {
     return (
         <>
 
+              
+               
 
             {
-                loading ? <h1 className='loading'>Please wait loading........</h1> : result.map((ele) =>
+                result.map((ele) =>
                     <div className='home_wrapper' key={ele.id}>
                         <div className="page_outer home_section_outer">
                             <div className="page_inner home_section_inner">
@@ -116,12 +130,17 @@ function Home() {
                                             <>
                                                 <button type='button'>apply now</button>
                                                 <p>{ele.acf.innovation_heading}</p>
+                                                
                                             </>
                                         )}
                                     </div>
                                 </div>
                             </div>
                         </div>
+
+                       
+
+
 
 
                         {/*about us section starts*/}
@@ -345,6 +364,8 @@ function Home() {
 
 
                     </div>
+
+
 
 
                 )
